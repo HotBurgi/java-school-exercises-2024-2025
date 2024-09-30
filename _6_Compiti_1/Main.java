@@ -51,6 +51,23 @@ public class Main {
         System.out.println(phrase);
     }
 
+    public static void numberOfLetters (String phrase) {
+        Scanner input = new Scanner(System.in);
+
+        char letter;
+        int count = 0;
+        System.out.print("Chose  a letter: ");
+        letter = input.next().charAt(0);
+
+        for (int i = 0; i < phrase.length(); i++) {
+            if (letter == phrase.charAt(i)) {
+                count++;
+            }
+        }
+
+        System.out.println(count + " times " + letter);
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String phrase = "";
@@ -58,7 +75,7 @@ public class Main {
         int pick;
 
         do {
-            System.out.println("1. remove first word\n2. separate vowels and cons\n3. comp 1\n4. input string");
+            System.out.println("1. remove first word\n2. separate vowels and cons\n3. comp 1\n4. input string\n5. number of letters");
             pick = input.nextInt();
             input.nextLine();
 
@@ -76,6 +93,9 @@ public class Main {
                 case 4:
                     phrase = input.nextLine();
                     phrase = phrase.trim();
+                    break;
+                case 5:
+                    numberOfLetters(phrase);
                     break;
             }
         } while (pick != 0);
