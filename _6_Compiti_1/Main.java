@@ -68,9 +68,39 @@ public class Main {
         System.out.println(count + " times " + letter);
     }
 
+    public static boolean isInQueue (String phrase, String tail) {
+        if(phrase.endsWith(tail)){
+            return true;
+        }
+        return false;
+    }
+
+    public static char heatChar (String phrase) {
+        String watched = "";
+        int count, times = 0;
+        char heated = ' ';
+
+        for (int i = 0; i < phrase.length(); i++) {
+            count = 0;
+            if (watched.indexOf(phrase.charAt(i)) == -1) {
+                for (int j = 0; j < phrase.length(); j++){
+                    if (phrase.charAt(j) == phrase.charAt(i)) {
+                        count++;
+                    }
+                    if (count > times){
+                        times = count;
+                        heated = phrase.charAt(i);
+                    }
+                }
+                watched += phrase.charAt(i);
+            }
+        }
+        return heated;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String phrase = "";
+        String phrase = "", tail = "";
 
         int pick;
 
@@ -96,6 +126,14 @@ public class Main {
                     break;
                 case 5:
                     numberOfLetters(phrase);
+                    break;
+                case 6:
+                    System.out.println("Write the tail: ");
+                    tail = input.nextLine();
+                    System.out.println(isInQueue(phrase, tail));
+                    break;
+                case 7:
+                    System.out.println("The most frequent char is: " + heatChar(phrase));
                     break;
             }
         } while (pick != 0);
