@@ -105,7 +105,7 @@ public class Main {
         int pick;
 
         do {
-            System.out.println("1. remove first word\n2. separate vowels and cons\n3. comp 1\n4. input string\n5. number of letters");
+            System.out.println("1. remove first word\n2. separate vowels and cons\n3. comp 1\n4. input string\n5. number of letters\n6. Is in tail\n7. Most freq char\n0. Exit");
             pick = input.nextInt();
             input.nextLine();
 
