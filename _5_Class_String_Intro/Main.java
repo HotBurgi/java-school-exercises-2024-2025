@@ -12,6 +12,8 @@ public class Main {
             }
         }
 
+        int a = phrase.indexOf('a');
+
         if (count == 1) {
             return true;
         }
