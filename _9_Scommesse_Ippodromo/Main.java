@@ -10,7 +10,7 @@ public class Main {
 
     public static int[] generatePodium () {
         int winner;
-        int [] podium = {-1, -1 -1};
+        int [] podium = {-1, -1, -1};
 
         System.out.println("PODIUM");
         for (int i = 0; i < 3; i++) {
