@@ -1,4 +1,4 @@
-package _2_Es_2;
+package _2_es_2;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package _9_Scommesse_Ippodromo;
+package _9_scommesse_ippodromo;
 
 import java.util.Random;
 import java.util.Scanner;

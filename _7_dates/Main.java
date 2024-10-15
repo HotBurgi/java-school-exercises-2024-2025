@@ -1,4 +1,4 @@
-package _7_Dates;
+package _7_dates;
 
 import java.time.LocalDate;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package _10_Calcoli_Numeri_Complessi;
+package _10_calcoli_numeri_complessi;
 
 import java.util.Scanner;
 

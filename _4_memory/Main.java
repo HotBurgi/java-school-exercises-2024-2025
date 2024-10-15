@@ -1,4 +1,4 @@
-package _4_Memory;
+package _4_memory;
 
 import java.util.Random;
 import java.util.Scanner;
