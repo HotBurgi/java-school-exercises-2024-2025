@@ -2,7 +2,7 @@ package _11_scommesse_ippodromo_2;
 
 public class Giocatore {
     private int cassa;
-    private int pv; // piazzato (0) /vincente (1)
+    private int pv; // piazzato (0) / vincente (1)
     private int indiceCavallo;
 
     public Giocatore() {

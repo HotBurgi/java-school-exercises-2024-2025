@@ -1,4 +1,4 @@
-package _6_compiti_1;
+package _06_compiti_1;
 
 import java.util.Scanner;
 

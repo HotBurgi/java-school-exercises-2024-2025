@@ -1,4 +1,4 @@
-package _3_es_array;
+package _03_es_array;
 
 import java.util.Random;
 import java.util.Scanner;

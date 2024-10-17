@@ -1,4 +1,4 @@
-package _1_es_1;
+package _01_es_1;
 import java.util.Random;
 import java.util.Scanner;
 

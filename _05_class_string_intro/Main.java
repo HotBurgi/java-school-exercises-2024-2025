@@ -1,4 +1,4 @@
-package _5_class_string_intro;
+package _05_class_string_intro;
 
 import java.util.Scanner;
 

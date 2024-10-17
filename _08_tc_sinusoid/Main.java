@@ -1,4 +1,4 @@
-package _8_tc_sinusoid;
+package _08_tc_sinusoid;
 
 public class Main {
     final static double pi = Math.PI;
