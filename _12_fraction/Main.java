@@ -11,7 +11,8 @@ public class Main {
         int pick, power, newNumerator, newDenominator, choose;
 
         do {
-            System.out.println("1.Opposite\n2.Reciprocal\n3.Sum\n4.Subtract\n5.Multiply\n6.Divide\n7.Pow\n8.Change NUM/DEN");
+            System.out.println("1. Opposite\n2. Reciprocal\n3. Sum\n4. Subtract\n5. Multiply\n6. Divide\n7. Pow\n8. Change NUM/DEN\n0. Exit");
+            System.out.print("Pick an option: ");
             pick = scanner.nextInt();
 
             switch (pick) {
@@ -22,8 +23,12 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Reciprocal");
-                    fraction1.reciprocal();
-                    System.out.println(fraction1);
+                    try {
+                        fraction1.reciprocal();
+                        System.out.println(fraction1);
+                    } catch (ArithmeticException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 3:
                     System.out.println("Sum");
@@ -42,8 +47,12 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Division");
-                    fraction1.div(fraction2);
-                    System.out.println(fraction1);
+                    try {
+                        fraction1.div(fraction2);
+                        System.out.println(fraction1);
+                    } catch (ArithmeticException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case 7:
                     System.out.print("What power: ");
@@ -52,12 +61,12 @@ public class Main {
                     System.out.println(fraction1);
                     break;
                 case 8:
-                    System.out.println("Numerator");
+                    System.out.print("Numerator: ");
                     newNumerator = scanner.nextInt();
-                    System.out.println("Denominator");
+                    System.out.print("Denominator: ");
                     newDenominator = scanner.nextInt();
 
-                    System.out.print("Which fraction you want to change? 1 / 2");
+                    System.out.print("Which fraction you want to change? 1 / 2: ");
                     choose = scanner.nextInt();
                     if (choose == 1) {
                         fraction1.setNumerator(newNumerator);
@@ -67,6 +76,11 @@ public class Main {
                         fraction2.setDenominator(newDenominator);
                     }
                     break;
+                case 0:
+                    System.out.println("Exiting...");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
             }
         } while (pick != 0);
     }

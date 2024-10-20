@@ -5,14 +5,18 @@ public class Fraction {
     private int denominator;
 
     public Fraction(int numerator, int denominator) {
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Denominator cannot be zero.");
+        }
         this.numerator = numerator;
         this.denominator = denominator;
+        reduce();
     }
-    //If created empty, assign 1 / 1
+
     public Fraction() {
         this(1, 1);
     }
-    //GET
+
     public int getNumerator() {
         return numerator;
     }
@@ -20,34 +24,38 @@ public class Fraction {
     public int getDenominator() {
         return denominator;
     }
-    //SET
+
     public void setNumerator(int numerator) {
         this.numerator = numerator;
+        reduce();
     }
 
     public void setDenominator(int denominator) {
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Denominator cannot be zero.");
+        }
         this.denominator = denominator;
+        reduce();
     }
 
     @Override
     public String toString() {
-        return "Fraction{" +
-                "numerator=" + numerator +
-                ", denominator=" + denominator +
-                '}';
+        return numerator + "/" + denominator;
     }
 
-    //OPPOSITE
     public void opposite() {
         this.numerator *= -1;
     }
-    //RECIPROCAL
+
     public void reciprocal() {
+        if (numerator == 0) {
+            throw new ArithmeticException("Cannot take reciprocal of zero.");
+        }
         int temp = numerator;
         this.numerator = denominator;
         this.denominator = temp;
     }
-    //SUM
+
     public void sum(Fraction fraction) {
         int commonDenominator = this.denominator * fraction.getDenominator();
         int adjustedNumerator1 = this.numerator * fraction.getDenominator();
@@ -55,8 +63,9 @@ public class Fraction {
 
         this.numerator = adjustedNumerator1 + adjustedNumerator2;
         this.denominator = commonDenominator;
+        reduce();
     }
-    //SUB
+
     public void sub(Fraction fraction) {
         int commonDenominator = this.denominator * fraction.getDenominator();
         int adjustedNumerator1 = this.numerator * fraction.getDenominator();
@@ -64,20 +73,40 @@ public class Fraction {
 
         this.numerator = adjustedNumerator1 - adjustedNumerator2;
         this.denominator = commonDenominator;
+        reduce();
     }
-    //MUL
+
     public void mul(Fraction fraction) {
         this.numerator *= fraction.getNumerator();
         this.denominator *= fraction.getDenominator();
+        reduce();
     }
-    //DIV
+
     public void div(Fraction fraction) {
+        if (fraction.getNumerator() == 0) {
+            throw new ArithmeticException("Cannot divide by zero.");
+        }
         this.numerator *= fraction.getDenominator();
         this.denominator *= fraction.getNumerator();
+        reduce();
     }
-    //POW
+
     public void pow(int num) {
         this.numerator = (int) Math.pow(this.numerator, num);
         this.denominator = (int) Math.pow(this.denominator, num);
+        reduce();
+    }
+
+    private void reduce() {
+        int gcd = gcd(numerator, denominator);
+        numerator /= gcd;
+        denominator /= gcd;
+    }
+
+    private int gcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
     }
 }
