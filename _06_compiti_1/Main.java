@@ -69,10 +69,7 @@ public class Main {
     }
 
     public static boolean isInQueue (String phrase, String tail) {
-        if(phrase.endsWith(tail)){
-            return true;
-        }
-        return false;
+        return phrase.endsWith(tail);
     }
 
     public static char heatChar (String phrase) {

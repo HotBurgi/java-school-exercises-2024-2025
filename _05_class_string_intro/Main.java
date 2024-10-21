@@ -14,11 +14,7 @@ public class Main {
 
         int a = phrase.indexOf('a');
 
-        if (count == 1) {
-            return true;
-        }
-
-        return false;
+        return count == 1;
     }
 
     public static int numberize(String phrase) {

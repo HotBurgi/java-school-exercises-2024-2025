@@ -42,10 +42,7 @@ public class Main {
     }
 
     public static boolean primo(int cavallo, int[] podio) {
-        if (podio[0] == cavallo) {
-            return true;
-        }
-        return false;
+        return podio[0] == cavallo;
     }
 
     public static boolean inPodio(int cavallo, int[] podio) {
