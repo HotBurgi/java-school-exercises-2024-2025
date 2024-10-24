@@ -7,6 +7,7 @@ public class Point {
         this.g = g;
         this.p = p;
         this.s = s;
+        fixAngle();
     }
 
     public int getG() {
@@ -15,6 +16,7 @@ public class Point {
 
     public void setG(int g) {
         this.g = g;
+        fixAngle();
     }
 
     public int getP() {
@@ -23,6 +25,7 @@ public class Point {
 
     public void setP(int p) {
         this.p = p;
+        fixAngle();
     }
 
     public int getS() {
@@ -31,6 +34,7 @@ public class Point {
 
     public void setS(int s) {
         this.s = s;
+        fixAngle();
     }
 
     @Override
@@ -61,14 +65,6 @@ public class Point {
         while (p < 0) {
             p += 60;
             g -= 1;
-        }
-
-        while (g >= 360) {
-            g -= 360;
-        }
-
-        while (g < 0) {
-            g += 360;
         }
     }
 }
