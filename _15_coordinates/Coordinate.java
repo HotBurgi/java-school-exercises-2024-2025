@@ -13,21 +13,6 @@ public class Coordinate {
         this.time = coordinateTime();
     }
 
-    public LocalDateTime coordinateTime() {
-        int offset = 0;
-        int deg = latitude.getG();
-        if (deg < 0) {
-            for (int i = deg; i < 0; i += 15) {
-                offset -= 1;
-            }
-        } else {
-            for (int i = deg; i > 0; i -= 15) {
-                offset += 1;
-            }
-        }
-        return LocalDateTime.now().plusHours(offset);
-    }
-
     public Point getLongitude() {
         return longitude;
     }
@@ -65,5 +50,20 @@ public class Coordinate {
                 ", latitude=" + latitude +
                 ", time=" + time +
                 '}';
+    }
+
+    public LocalDateTime coordinateTime() {
+        int offset = -1; // ITALY
+        int deg = latitude.getG();
+        if (deg < 0) {
+            for (int i = deg; i < 0; i += 15) {
+                offset -= 1;
+            }
+        } else {
+            for (int i = deg; i > 0; i -= 15) {
+                offset += 1;
+            }
+        }
+        return LocalDateTime.now().plusHours(offset);
     }
 }
