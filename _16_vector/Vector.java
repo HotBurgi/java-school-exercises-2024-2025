@@ -1,4 +1,4 @@
-package Vector;
+package _16_vector;
 
 public class Vector {
     Point p0;
@@ -7,7 +7,6 @@ public class Vector {
     public Vector(Point p0, Point p1) {
         this.p0 = p0;
         this.p1 = p1;
-
     }
 
     public Point getP0() {

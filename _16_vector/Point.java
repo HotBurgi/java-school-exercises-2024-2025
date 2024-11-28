@@ -1,4 +1,4 @@
-package Vector;
+package _16_vector;
 
 public class Point {
     private double x;
