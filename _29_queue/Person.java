@@ -1,12 +1,12 @@
 package _29_queue;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Person {
     private String name;
-    private ArrayList<String> shoppingList;
+    private HashMap<Integer, String> shoppingList;
 
-    public Person(String name, ArrayList<String> shoppingList) {
+    public Person(String name, HashMap<Integer, String> shoppingList) {
         this.name = name;
         this.shoppingList = shoppingList;
     }
@@ -19,11 +19,19 @@ public class Person {
         this.name = name;
     }
 
-    public ArrayList<String> getShoppingList() {
+    public HashMap<Integer, String> getShoppingList() {
         return shoppingList;
     }
 
-    public void setShoppingList(ArrayList<String> shoppingList) {
+    public void setShoppingList(HashMap<Integer, String> shoppingList) {
         this.shoppingList = shoppingList;
+    }
+
+    public int getTotal() {
+        int total = 0;
+        for (Integer price : shoppingList.keySet()) {
+            total += price;
+        }
+        return total;
     }
 }
