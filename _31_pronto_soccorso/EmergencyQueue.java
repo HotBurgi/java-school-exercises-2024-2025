@@ -53,7 +53,7 @@ public class EmergencyQueue {
             if (!queue.isEmpty()) { // Check for empty queue to avoid null pointer
                 System.out.println(queue.peek().getPriority() + " queue" + ": " + queue.size());
             } else {
-                System.out.println("Queue is empty");
+                System.out.println("CustomQueue is empty");
             }
         }
     }

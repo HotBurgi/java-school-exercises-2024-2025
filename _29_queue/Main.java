@@ -13,10 +13,10 @@ public class Main {
         int choice;
 
         do {
-            System.out.println("Supermarket Queue System");
-            System.out.println("1. Add Person to Queue");
-            System.out.println("2. Peek the Queue");
-            System.out.println("3. Remove Person from Queue");
+            System.out.println("Supermarket CustomQueue System");
+            System.out.println("1. Add Person to CustomQueue");
+            System.out.println("2. Peek the CustomQueue");
+            System.out.println("3. Remove Person from CustomQueue");
             System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
