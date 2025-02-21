@@ -23,7 +23,7 @@ public class Main {
             System.out.println("5. Save Invite List to File");
             System.out.println("6. Load Invite List from File");
             System.out.println("7. Add Book to Kindle");
-            System.out.println("8. List Books in Kindle");
+            System.out.println("8. List Book in Kindle");
             System.out.println("9. Search Book by Author");
             System.out.println("10. Search Book by Title");
             System.out.println("11. Search Book by ISBN");
