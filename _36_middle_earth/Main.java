@@ -47,5 +47,6 @@ public class Main {
                     break;
             }
         } while (pick != 0);
+
     }
 }
