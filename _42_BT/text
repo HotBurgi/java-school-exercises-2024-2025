@@ -1,0 +1,27 @@
+Una popolazione di BT
+Su una scacchiera 10x10 vive una popolazione di piccoli esseri, denominati successivamente bt, che
+si muove alla ricerca di cibo.
+Il numero 1 sulla scacchiera indica che un bt occupa una cella, mentre il numero 0 indica che la
+cella è vuota e quindi disponibile per il transito.
+Il cibo cade dall’alto sulla scacchiera in posizioni casuali e quando si verifica l’evento la scacchiera
+viene contrassegnata con il numero 2. A quel punto tutti i bt si muovono alla ricerca del cibo, perché
+sanno, consultando la scacchiera, dove si trova il cibo.
+I Bt si possono muovere
+Regola1: solo in verticale o in orizzontale.
+Regola 2: se il bt vede che lungo il tragitto è presente un altro bt non intraprende quel
+cammino e cerca un’altra strada.
+Regola 3: se bt non trova cibo sulla “croce” si sposta in una posizione adiacente, se non
+occupate.
+Regola 4: può ripetere per 3 volte la regola 3.
+Ogni bt deve nutrirsi per incrementare la sua energia, diversamente muore per mancanza di energia .
+Il cibo fornisce una quantità di energia pari a +20, ogni cambio di cella un decremento -1;
+Crea un menu nel main con le seguenti voci:
+1. crea una popolazione iniziale
+2. fai cadere il cibo.
+3. muovi i bt.
+4. la tua popolazione sopravvive ?
+5. visualizza la situazione sulla scacchiera.
+L’azione 3 può essere intrapresa più volte .
+Alla nascita, un bt ha un livello di energia casuale fra 50 e 60 , con un tempo di esistenza in vita pari
+a 0.
+Ai bt sopravvissuti , dopo l’azione 3, si aumenta di 1 il loro tempo di esistenza.

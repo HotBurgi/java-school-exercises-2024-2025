@@ -18,9 +18,13 @@ public class Board {
                 board[i][j] = 0;
             }
         }
+
+        for (int i = 0; i < 10; i++) {
+            addBT();
+        }
     }
 
-    public void addBT() {
+    private void addBT() {
         Random random = new Random();
 
         int x, y;
@@ -98,5 +102,14 @@ public class Board {
 
     public void setBtList(ArrayList<BT> btList) {
         this.btList = btList;
+    }
+
+    public void printBoard() {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }

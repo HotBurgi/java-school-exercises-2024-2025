@@ -6,181 +6,114 @@ import java.util.Random;
 public class BT {
     private int energy;
     private int existenceTime;
-    private Position position;
+    private final Position position;
     private boolean alive;
 
     public BT(int x, int y) {
-        this.energy = 100;
+        this.energy = new Random().nextInt(11) + 50; // Random energy between 50 and 60
         this.existenceTime = 0;
         this.position = new Position(x, y);
         this.alive = true;
     }
 
     public void move(Board board) {
-        Random random = new Random();
-        ArrayList<String> possibleDirections = searchFood(board);
-        boolean moved = false;
+        if (!alive) return;
 
-        if (possibleDirections.isEmpty()) {
-            while (!moved) {
-                moved = moveDiagonally(board);
+        int moves = 0;
+        while (moves < 3) {
+            ArrayList<String> directions = searchFood(board);
+            if (!directions.isEmpty()) {
+                moveInDirection(directions.get(new Random().nextInt(directions.size())), board);
+                break;
+            } else {
+                if (moveToAdjacent(board)) break;
             }
-            return;
+            moves++;
         }
 
-        int direction = random.nextInt(possibleDirections.size());
-        String moveDirection = possibleDirections.get(direction);
+        consumeEnergy();
+        if (energy <= 0) {
+            alive = false;
+        }
+    }
 
-        switch (moveDirection) {
+    private void moveInDirection(String direction, Board board) {
+        int x = position.getX();
+        int y = position.getY();
+
+        switch (direction) {
             case "up":
-                if (this.position.getX() - 1 >= 0 && board.getBoard()[this.position.getX() - 1][this.position.getY()] != 1) {
-                    this.position.setX(this.position.getX() - 1);
-                    moved = true;
-                }
+                position.setX(x - 1);
                 break;
             case "down":
-                if (this.position.getX() + 1 < board.getBoard().length && board.getBoard()[this.position.getX() + 1][this.position.getY()] != 1) {
-                    this.position.setX(this.position.getX() + 1);
-                    moved = true;
-                }
+                position.setX(x + 1);
                 break;
             case "left":
-                if (this.position.getY() - 1 >= 0 && board.getBoard()[this.position.getX()][this.position.getY() - 1] != 1) {
-                    this.position.setY(this.position.getY() - 1);
-                    moved = true;
-                }
+                position.setY(y - 1);
                 break;
             case "right":
-                if (this.position.getY() + 1 < board.getBoard().length && board.getBoard()[this.position.getX()][this.position.getY() + 1] != 1) {
-                    this.position.setY(this.position.getY() + 1);
-                    moved = true;
-                }
+                position.setY(y + 1);
                 break;
         }
     }
 
-    private boolean moveDiagonally(Board board) {
-        boolean moved = false;
+    private boolean moveToAdjacent(Board board) {
         Random random = new Random();
-        int x = this.position.getX();
-        int y = this.position.getY();
-        int direction = random.nextInt(4);
+        int x = position.getX();
+        int y = position.getY();
+        int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-        switch (direction) {
-            case 0: //top-left
-                if (x - 1 >= 0 && y - 1 >= 0 && board.getBoard()[x - 1][y - 1] != 1) {
-                    this.position.setX(x - 1);
-                    this.position.setY(y - 1);
-                    moved = true;
+        for (int i = 0; i < 4; i++) {
+            int dx = directions[i][0];
+            int dy = directions[i][1];
+            int newX = x + dx;
+            int newY = y + dy;
+
+            if (newX >= 0 && newX < board.getBoard().length && newY >= 0 && newY < board.getBoard()[0].length
+                    && board.getBoard()[newX][newY] == 0) {
+                position.setX(newX);
+                position.setY(newY);
+                return true;
                 }
-                break;
-            case 1: //top-right
-                if (x - 1 >= 0 && y + 1 < board.getBoard().length && board.getBoard()[x - 1][y + 1] != 1) {
-                    this.position.setX(x - 1);
-                    this.position.setY(y + 1);
-                    moved = true;
-                }
-                break;
-            case 2: //bottom-left
-                if (x + 1 < board.getBoard().length && y - 1 >= 0 && board.getBoard()[x + 1][y - 1] != 1) {
-                    this.position.setX(x + 1);
-                    this.position.setY(y - 1);
-                    moved = true;
-                }
-                break;
-            case 3: //bottom-right
-                if (x + 1 < board.getBoard().length && y + 1 < board.getBoard().length && board.getBoard()[x + 1][y + 1] != 1) {
-                    this.position.setX(x + 1);
-                    this.position.setY(y + 1);
-                    moved = true;
-                }
-                break;
         }
         return false;
     }
 
     public ArrayList<String> searchFood(Board board) {
-        int x = this.position.getX();
-        int y = this.position.getY();
+        ArrayList<String> directions = new ArrayList<>();
+        int x = position.getX();
+        int y = position.getY();
+        int[][] grid = board.getBoard();
 
-        ArrayList<String> possibleDirections = new ArrayList<>();
-        // Check down (x++)
-        for (int i = x + 1; i < board.getBoard().length; i++) {
-            if (board.getBoard()[i][y] == 2) {
-                break;
-            } else if (board.getBoard()[i][y] == 2) {
-                possibleDirections.add("down");
-                break;
-            }
-        }
-        // Check up (x--)
-        for (int i = x - 1; i > 0; i--) {
-            if (board.getBoard()[i][y] == 2) {
-                break;
-            } else if (board.getBoard()[i][y] == 2) {
-                possibleDirections.add("up");
-                break;
-            }
-        }
-        // Check right (y++)
-        for (int i = y + 1; i < board.getBoard().length; i++) {
-            if (board.getBoard()[x][i] == 2) {
-                break;
-            } else if (board.getBoard()[x][i] == 2) {
-                possibleDirections.add("right");
-                break;
-            }
-        }
-        // Check left (y--)
-        for (int i = y - 1; i > 0; i--) {
-            if (board.getBoard()[x][i] == 2) {
-                break;
-            } else if (board.getBoard()[x][i] == 2) {
-                possibleDirections.add("left");
-                break;
-            }
-        }
+        if (x > 0 && grid[x - 1][y] == 2) directions.add("up");
+        if (x < grid.length - 1 && grid[x + 1][y] == 2) directions.add("down");
+        if (y > 0 && grid[x][y - 1] == 2) directions.add("left");
+        if (y < grid[0].length - 1 && grid[x][y + 1] == 2) directions.add("right");
 
-        return possibleDirections;
+        return directions;
     }
 
     public void consumeEnergy() {
-        this.energy -= 10;
+        energy -= 1;
     }
 
-    public void restoreEnergy(int mult) {
-        this.energy += 10 * mult;
+    public void restoreEnergy(int restored) {
+        energy += restored;
     }
 
     public boolean isAlive() {
-        return this.alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
-    public int getEnergy() {
-        return energy;
-    }
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
-    }
-
-    public int getExistenceTime() {
-        return existenceTime;
-    }
-
-    public void setExistenceTime(int existenceTime) {
-        this.existenceTime = existenceTime;
+        return alive;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public int getEnergy() {
+        return energy;
     }
-}
+
+    public void incrementExistenceTime() {
+        existenceTime++;
+    }
+    }
