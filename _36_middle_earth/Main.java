@@ -9,7 +9,6 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     BattleGround battleGround;
 
-
     public Main() {
         Dwarf dwarf = new Dwarf("Gimli");
         Hobbit hobbit = new Hobbit("Frodo");
