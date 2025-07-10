@@ -16,7 +16,7 @@ public class Main {
         // Simulate movement and energy consumption for each BT
         for (BT bt : board.getBtList()) {
             System.out.println("\nBT Initial Position: (" + bt.getPosition().getX() + ", " + bt.getPosition().getY() + ")");
-            bt.move(board);
+            board.
             bt.consumeEnergy();
             System.out.println("BT After Move Position: (" + bt.getPosition().getX() + ", " + bt.getPosition().getY() + ")");
             System.out.println("BT Energy: " + bt.getEnergy());

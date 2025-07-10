@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="334.0" prefWidth="291.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mtbfx.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+
+  <Label text="Scegli la tua MTB" />
+   <Label fx:id="outputLbl" />
+   <TextField fx:id="marcaTxt" alignment="CENTER" promptText="Marca" />
+   <TextField fx:id="modelloTxt" alignment="CENTER" promptText="Modello" />
+   <HBox prefHeight="18.0" prefWidth="200.0" style="-fx-spacing: 10px;">
+      <children>
+         <VBox prefHeight="45.0" prefWidth="143.0" style="-fx-spacing: 10px;">
+            <children>
+               <RadioButton fx:id="frontRadio" mnemonicParsing="false" selected="true" text="Front">
+                  <toggleGroup>
+                     <ToggleGroup fx:id="wheels" />
+                  </toggleGroup>
+               </RadioButton>
+               <RadioButton fx:id="biRadio" mnemonicParsing="false" prefHeight="18.0" prefWidth="120.0" text="Bi-ammortizzata" toggleGroup="$wheels" />
+            </children>
+         </VBox>
+         <ComboBox fx:id="coloreCbox" prefWidth="150.0" promptText="Colore" />
+      </children>
+   </HBox>
+   <HBox prefHeight="100.0" prefWidth="287.0" style="-fx-spacing: 10px;">
+      <children>
+         <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 10px;">
+            <children>
+               <CheckBox fx:id="monoChk" mnemonicParsing="false" text="Monocorona" />
+               <CheckBox fx:id="sellaChk" mnemonicParsing="false" text="Alzasella" />
+               <CheckBox fx:id="pompaChk" mnemonicParsing="false" text="Pompa ruote" />
+            </children>
+         </VBox>
+         <Button fx:id="scegliBtn" mnemonicParsing="false" onAction="#onScegliClick" text="Scegli" />
+         <Button fx:id="annullaBtn" mnemonicParsing="false" onAction="#onClickCleanScreen" text="Annulla" />
+      </children>
+   </HBox>
+</VBox>

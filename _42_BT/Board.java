@@ -24,6 +24,18 @@ public class Board {
         }
     }
 
+    public void movePopulation() {
+        for (BT bt : btList) {
+            if (bt.getEnergy() > 0) {
+                bt.move(this);
+            } else {
+                removeBT(bt);
+            }
+        }
+
+        updateBoard();
+    }
+
     private void addBT() {
         Random random = new Random();
 
@@ -43,7 +55,8 @@ public class Board {
     public void updateBoard() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                board[i][j] = 0;
+                if (board[i][j] < 2)
+                    board[i][j] = 0;
             }
         }
 

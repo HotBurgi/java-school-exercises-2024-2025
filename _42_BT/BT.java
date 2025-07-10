@@ -35,6 +35,8 @@ public class BT {
         if (energy <= 0) {
             alive = false;
         }
+
+        this.existenceTime++;
     }
 
     private void moveInDirection(String direction, Board board) {
